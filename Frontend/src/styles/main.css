@@ -1,0 +1,179 @@
+/* ====== Styles pour le formulaire utilisateur (UserForm) ====== */
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Espacement entre les éléments */
+  margin: 20px auto;
+  width: 100%;
+  max-width: 400px; /* Limite la largeur du formulaire */
+  padding: 20px;
+  border: 1px solid #ddd; /* Bordure légère */
+  border-radius: 10px; /* Bords arrondis */
+  background-color: #f9f9f9; /* Couleur de fond douce */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour un effet moderne */
+}
+
+.user-form input {
+  padding: 12px;
+  width: 100%;
+  border: 1px solid #ccc; /* Couleur de bordure standard */
+  border-radius: 5px; /* Bords arrondis */
+  font-size: 16px; /* Taille de texte confortable */
+  box-sizing: border-box; /* Assure une mise en page uniforme */
+  background-color: #fff; /* Couleur de fond */
+  transition: border-color 0.3s ease; /* Animation au survol */
+}
+
+.user-form input:focus {
+  outline: none;
+  border-color: #007bff; /* Bordure bleue au focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Ombre bleue légère */
+}
+
+.user-form button {
+  background-color: #007bff; /* Bleu principal */
+  color: white; /* Texte blanc */
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold; /* Texte plus visible */
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.user-form button:hover {
+  background-color: #0056b3; /* Bleu foncé au survol */
+  transform: scale(1.05); /* Légère mise en avant */
+}
+
+.user-form button:active {
+  background-color: #003f7f; /* Bleu encore plus foncé */
+  transform: scale(0.95); /* Réduction pour effet de clic */
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px; /* Taille plus petite */
+  font-weight: bold; /* Texte en gras */
+}
+
+/* ====== Styles pour les cartes utilisateur (UserCard) ====== */
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  margin: 15px auto;
+  width: 100%;
+  max-width: 400px; /* Limite la largeur */
+  border: 1px solid #ddd; /* Bordure légère */
+  border-radius: 10px; /* Bords arrondis */
+  background-color: #ffffff; /* Fond blanc */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour un effet moderne */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animation */
+}
+
+.user-card:hover {
+  transform: translateY(-5px); /* Légère élévation */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Ombre plus prononcée */
+}
+
+.user-card h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333; /* Texte noir doux */
+}
+
+.user-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #666; /* Texte gris doux */
+}
+
+.user-card button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Bouton de suppression */
+.user-card .delete-button {
+  background-color: #dc3545; /* Rouge pour suppression */
+  color: white;
+}
+
+.user-card .delete-button:hover {
+  background-color: #a71d2a; /* Rouge foncé au survol */
+  transform: scale(1.05); /* Mise en avant */
+}
+
+/* Bouton de modification */
+.user-card .edit-button {
+  background-color: #007bff; /* Bleu pour modification */
+  color: white;
+}
+
+.user-card .edit-button:hover {
+  background-color: #0056b3; /* Bleu foncé au survol */
+  transform: scale(1.05); /* Mise en avant */
+}
+
+/* Mise en page des boutons */
+.user-card .button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Espacement entre les boutons */
+}
+
+/* ====== Styles globaux ====== */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9; /* Fond général clair */
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin: 20px 0;
+}
+
+/* Adaptation pour les écrans mobiles */
+@media (max-width: 480px) {
+  .user-form, .user-card {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .user-form input, .user-form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .user-card h3 {
+    font-size: 16px;
+  }
+
+  .user-card p {
+    font-size: 12px;
+  }
+
+  .user-card button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}

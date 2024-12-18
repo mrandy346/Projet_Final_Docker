@@ -1,0 +1,63 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  # Permet d'utiliser MySQL sans mot de passe
+      MYSQL_DATABASE: crudprojet         # Base de données à créer au démarrage
+    ports:
+      - "5000:3306"                      # Port exposé pour MySQL
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./crudprojet:/docker-entrypoint-initdb.d # Script SQL d'initialisation
+    networks:
+      - app-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql                    # Connexion à MySQL
+    ports:
+      - "8080:80"                        # Interface PhpMyAdmin
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    restart: always
+    ports:
+      - "4000:4000"                      # Port exposé pour le backend
+    environment:
+      DB_HOST: mysql
+      DB_USER: root                      # Utilisateur MySQL
+      DB_PASSWORD: ""                    # Pas de mot de passe
+      DB_NAME: crudprojet                # Nom de la base de données
+      DB_PORT: 3306
+    networks:
+      - app-network
+    depends_on:
+      - mysql
+    command: node server.js              # Démarrage direct sans `wait-on`
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    restart: always
+    ports:
+      - "8081:80"                        # Interface frontend exposée
+    networks:
+      - app-network
+    depends_on:
+      - backend
+
+networks:
+  app-network:
+    driver: bridge
